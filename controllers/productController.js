@@ -41,3 +41,13 @@ exports.createProduct = async (req, res) => {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 };
+
+//display all products main page
+exports.alluserProducts = async (req, res) => {
+    try {
+      const products = await Product.find(); // Assuming you're using MongoDB
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to fetch products.' });
+    }
+  };
